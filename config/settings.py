@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     "mainapp",
 ]
 
+# Через MIDDLEWARE происходит защита ресурса от каких либо атак, 
+#   обрабатывая запросы и ответы
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -52,10 +54,22 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "config.urls"
 
+# Хранит все настройки для работы с шаблонами
+
+# BACKEND  - Движок, который будет использован 
+#           в данном случае для работы с шаблонами 
+#           (Стандартный либо же Jinja)
+# DIRS     - Дополнительный путь к шаблонам
+# APP_DIRS - Переключатель, позволяющий искать шаблоны внутри приложений
+# OPTIONS  - Дополнительный словарь настроек, в рамках которого у
+#           же подключены контекстные процессоры
+# context_processors - функция которая принимает на вход некоторый 
+#           объект запроса(request), и в качестве выхода возвращает словарь.
+#           Основная идея - формирование контекста для любого шаблона
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": ["templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -63,6 +77,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "mainapp.context_processors.example.simple_context_processor",
             ],
         },
     },
