@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "social_django",
     "mainapp",
     "authapp",
+    "crispy_forms",
 ]
 
 # Через MIDDLEWARE происходит защита ресурса от каких либо атак, 
@@ -171,3 +172,5 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 SOCIAL_AUTH_GITHUB_KEY = ""
 SOCIAL_AUTH_GITHUB_SECRET = ""
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
